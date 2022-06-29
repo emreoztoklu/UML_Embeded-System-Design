@@ -5,20 +5,27 @@
 
 QP real-time embedded frameworks (RTEFs) amd QM modelling tool by Quantum Leaps, LLC
 
-<href>https://www.state-machine.com/</href>
-<href>https://www.state-machine.com/products/gp</href>
+<p>
+  <href>https://www.state-machine.com/</href>
+</p>
+<p>
+  <href>https://www.state-machine.com/products/gp</href>
+</p>
+<p>
 <href>https://www.state-machine.com/licensing</href>
-
+</p>
 
 QP Examples Test: 
+<p>
   "D:\Program Files\qp\qpc\examples\workstation\qhsmtst"
-
+</p>
 
  Documents:
- <href>https://www.state-machine.com/qm/ce_directive.html</href>
-  
+ <p>
+  <href>https://www.state-machine.com/qm/ce_directive.html</href>
+ </p> 
 
 
-$declare${HSMs::QHsmTst}
-$define${HSMs::QHsmTst}
+<p>$declare${HSMs::QHsmTst}</p>
+<p>$define${HSMs::QHsmTst}</p>
 
