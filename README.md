@@ -34,8 +34,11 @@
 ####Documents:
 
  [directive](https://www.state-machine.com/qm/ce_directive.htm)
+ 
  [qepn](https://www.state-machine.com/qpn/qepn_8h.html)
+ 
  [QHSM](https://www.state-machine.com/qpn/struct_q_hsm.html)
+ 
  [Atmega328_Datasheet](https://www.waveshare.com/w/upload/9/93/ATmega328P_datasheet_Complete.pdf)
 
 ###NOTES
@@ -47,6 +50,7 @@
   [Attributes](https://www.state-machine.com/qm/bm_attr.html)
 
   [Active_Object_web](https://www.state-machine.com/active-object)
+  
   [Active_Object_folder](https://github.com/emreoztoklu/UML_Embeded-System-Design/tree/main/DOCUMENT\multiple_SM)
 
 
