@@ -54,5 +54,4 @@
   [Active_Object_folder](https://github.com/emreoztoklu/UML_Embeded-System-Design/tree/main/DOCUMENT\multiple_SM)
 
 
-  "008ClockAlarm_AO"
-  [QActive_ctor()](https://www.state-machine.com/qpn/struct_q_active.html#a13edf5eeb78176195720ac88bf70b3ef)
+  "008ClockAlarm_AO" [QActive_ctor()](https://www.state-machine.com/qpn/struct_q_active.html#a13edf5eeb78176195720ac88bf70b3ef)
