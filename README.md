@@ -19,11 +19,17 @@
 
   Explanation:
     QEP   (Hierarchical State Machines)   QHsm class
+    
     QF    (Active Object Framework)       QActive class
+    
     QS    (Software Tracing)              QS_INIT()
+    
     QV    (Cooperative Kernel)            QV_INIT()
+    
     QK    (Preemptive RTC Kernel)         QK_INIT()
+    
     QXK   (Dual-Mode Kernel)              QXThread class
+    
   
   [Examples](https://www.state-machine.com/qpc/exa.html)
 
