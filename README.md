@@ -12,7 +12,9 @@
 ##QP real-time embedded frameworks (RTEFs) amd QM modelling tool by Quantum Leaps, LLC
 
  [website](https://www.state-machine.com/)
+ 
  [gp](https://www.state-machine.com/products/gp)
+ 
  [licensing](https://www.state-machine.com/licensing)
 
   Explanation:
