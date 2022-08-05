@@ -68,6 +68,7 @@ typedef event_status_t (*e_handler_t)(protimer_t* const mobj, event_t const * co
 void do_beep(void);
 /************************************************/
 void protimer_init(protimer_t*mobj);
+void protimer_state_table_init(protimer_t* const mobj);
 void protimer_event_dispatcher(protimer_t* const mobj, event_t const * const e);
 
 /*prototypes of event handlers*/
@@ -102,7 +103,7 @@ event_status_t PAUSE_START_PAUSE(protimer_t* const mobj, event_t const * const e
 event_status_t PAUSE_ABRT(protimer_t* const mobj, event_t const * const e);
 /**************************************************************************************/
 
-void protimer_state_table_init(protimer_t* const mobj);
+
 
 #endif
 

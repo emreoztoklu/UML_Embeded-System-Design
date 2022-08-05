@@ -5,13 +5,28 @@ void protimer_init(protimer_t* mobj){
     event_t event_enter_action;
     e_handler_t ehandler;
 
-    event_enter_action.sig = ENTRY;
-    mobj->active_state = IDLE;
-    mobj->pro_time = 0;
-    
     ehandler =(e_handler_t)mobj->state_table [IDLE * MAX_SIGNALS + ENTRY];
+
+    mobj->active_state = IDLE;  
+    event_enter_action.sig = ENTRY;
+
+    mobj->pro_time = 0;
+   
     (*ehandler)(mobj, &event_enter_action);
 }
+
+void protimer_state_table_init(protimer_t* const mobj){
+    static e_handler_t protimer_state_table[MAX_STATES][MAX_SIGNALS] = {
+      [IDLE]     = {&IDLE_INC_TIME, NULL, &IDLE_TIME_TICK, &IDLE_START_PAUSE, NULL, &IDLE_ENTRY, &IDLE_EXIT},
+      [TIME_SET] = {&TIME_SET_INC_TIME, &TIME_SET_DEC_TIME, NULL, &TIME_SET_START_PAUSE, &TIME_SET_ABRT, &TIME_SET_ENTRY, &TIME_SET_EXIT},
+      [COUNTDOWN]= {NULL, NULL, &COUNTDOWN_TIME_TICK, &COUNTDOWN_START_PAUSE, &COUNTDOWN_ABRT, NULL, &COUNTDOWN_EXIT}, 
+      [PAUSE]    = {&PAUSE_INC_TIME, &PAUSE_DEC_TIME, NULL, &PAUSE_START_PAUSE, &PAUSE_ABRT, &PAUSE_ENTRY, &PAUSE_EXIT},
+      [STAT]     = {NULL, NULL, &STAT_TIME_TICK, NULL, NULL, &STAT_ENTRY, &STAT_EXIT},    
+    };
+
+    mobj->state_table = (uintptr_t*) &protimer_state_table[0][0];
+}
+
 
 void protimer_event_dispatcher(protimer_t* const mobj, event_t const * const e){
     event_status_t status;
@@ -20,6 +35,7 @@ void protimer_event_dispatcher(protimer_t* const mobj, event_t const * const e){
      
     source   = mobj->active_state;
     ehandler = (e_handler_t)mobj->state_table[mobj->active_state * MAX_SIGNALS + e->sig];
+    
     if(ehandler)
         status   = (*ehandler)(mobj, e);
 
@@ -182,14 +198,3 @@ event_status_t PAUSE_ABRT(protimer_t* const mobj, event_t const * const e) {
     return EVENT_TRANSITION;
 }
 
-void protimer_state_table_init(protimer_t* const mobj){
-    static e_handler_t protimer_state_table[MAX_STATES][MAX_SIGNALS] = {
-      [IDLE]     = {&IDLE_INC_TIME, NULL, &IDLE_TIME_TICK, &IDLE_START_PAUSE, NULL, &IDLE_ENTRY, &IDLE_EXIT},
-      [TIME_SET] = {&TIME_SET_INC_TIME, &TIME_SET_DEC_TIME, NULL, &TIME_SET_START_PAUSE, &TIME_SET_ABRT, &TIME_SET_ENTRY, &TIME_SET_EXIT},
-      [COUNTDOWN]= {NULL, NULL, &COUNTDOWN_TIME_TICK, &COUNTDOWN_START_PAUSE, &COUNTDOWN_ABRT, NULL, &COUNTDOWN_EXIT}, 
-      [PAUSE]    = {&PAUSE_INC_TIME, &PAUSE_DEC_TIME, NULL, &PAUSE_START_PAUSE, &PAUSE_ABRT, &PAUSE_ENTRY, &PAUSE_EXIT},
-      [STAT]     = {NULL, NULL, &STAT_TIME_TICK, NULL, NULL, &STAT_ENTRY, &STAT_EXIT},    
-    };
-
-    mobj->state_table = (uintptr_t*) &protimer_state_table[0][0];
-}
